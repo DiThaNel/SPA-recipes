@@ -1,0 +1,168 @@
+// Custom Bootstrap Variables
+
+// Color System
+$primary: #a855f7;
+$secondary: #94a3b8;
+$success: #22c55e;
+$info: #0ea5e9;
+$warning: #eab308;
+$danger: #ef4444;
+$light: #f1f5f9;
+$dark: #0f172a;
+
+// Body & Typography
+$body-bg: #000000;
+$body-color: #f8fafc;
+$font-family-base: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+// Components
+$card-bg: rgba(30, 27, 75, 0.4);
+$card-border-color: rgba(255, 255, 255, 0.1);
+$card-color: #f8fafc;
+
+$modal-content-bg: #1e1b4b;
+$modal-content-color: #f8fafc;
+$modal-header-border-color: rgba(255, 255, 255, 0.1);
+$modal-footer-border-color: rgba(255, 255, 255, 0.1);
+
+$list-group-bg: transparent;
+$list-group-border-color: #ffffff;
+$list-group-color: #f8fafc;
+$list-group-action-hover-bg: rgba(255, 255, 255, 0.05);
+$enable-gradients: true;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
+
+// Custom global styles
+body {
+  font-family: var(--font-inter), sans-serif;
+  background-color: #000000;
+  min-height: 100vh;
+  position: relative;
+  
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #000000 0%, #2e1065 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+.card {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    border-color: rgba(168, 85, 247, 0.5);
+  }
+
+  .card-header {
+    background: rgba(46, 16, 101, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: capitalize;
+    font-weight: 700;
+  }
+}
+
+.btn-outline-secondary {
+  color: #cbd5e1;
+  border-color: #475569;
+  
+  &:hover {
+    background-color: #475569;
+    color: white;
+  }
+}
+
+.btn-outline-primary {
+  color: #cbd5e1;
+  
+  &:hover {
+    color: white;
+  }
+}
+
+// Ingredient box styling override
+.bg-light {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #e2e8f0 !important;
+    border-left-color: $primary !important;
+}
+
+.text-muted {
+    color: #94a3b8 !important;
+}
+
+.text-dark {
+    color: #f8fafc !important;
+}
+
+.text-secondary {
+    color: #cbd5e1 !important;
+}
+
+// Modal customization
+.modal-content {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.form-control {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    
+    &:focus {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-color: $primary;
+        color: #f8fafc;
+        box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+    }
+    
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+// Custom Modal Buttons
+.btn-cancel {
+    color: #FFF;
+    transition: color 0.2s;
+    
+    &:hover {
+        color: #94a3b8;
+    }
+}
+
+.btn-save {
+    background: linear-gradient(135deg, $primary 0%, #7c3aed 100%);
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.3);
+    transition: all 0.4s ease-in-out;
+    color: #FFF;
+    
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.4);
+        background: linear-gradient(135deg, lighten($primary, 5%) 0%, lighten(#7c3aed, 5%) 100%);
+        color: #FFF;
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+}
