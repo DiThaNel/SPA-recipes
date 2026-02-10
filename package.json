@@ -14,6 +14,7 @@
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "@reduxjs/toolkit": "^2.11.2",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -27,6 +28,7 @@
     "react": "19.2.3",
     "react-bootstrap": "^2.10.10",
     "react-dom": "19.2.3",
+    "react-redux": "^9.2.0",
     "sass": "^1.97.3",
     "ts-node": "^10.9.2"
   },

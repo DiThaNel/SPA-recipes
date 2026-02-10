@@ -1,30 +1,34 @@
-"use client";
-
-import { Button, ListGroup } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Recipe } from "@/types";
 import { forwardRef } from "react";
+import { motion } from "framer-motion";
 
-interface RecipeItemProps extends React.HTMLAttributes<HTMLDivElement> {
+import { HTMLMotionProps } from "framer-motion";
+
+interface RecipeItemProps extends HTMLMotionProps<"div"> {
   recipe: Recipe;
   onEdit?: (recipe: Recipe) => void;
   onDelete?: (recipeId: string) => void;
   isOverlay?: boolean;
 }
 
-const RecipeItem = forwardRef<HTMLElement, RecipeItemProps>(
+const RecipeItem = forwardRef<HTMLDivElement, RecipeItemProps>(
   ({ recipe, onEdit, onDelete, isOverlay, style, className, ...props }, ref) => {
     return (
-      <ListGroup.Item
-        // @ts-ignore - ListGroup.Item ref type is complex/polymorphic
+      <motion.div
         ref={ref}
+        layout={!isOverlay}
+        initial={isOverlay ? { scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.2)" } : { opacity: 0, y: 10 }}
+        animate={isOverlay ? { scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.2)" } : { opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9 }}
         style={{
             ...style,
             cursor: isOverlay ? "grabbing" : "grab",
-            boxShadow: isOverlay ? "none" : "none",
-            background: isOverlay ? "transparent" : undefined, 
-            borderColor: isOverlay ? "transparent" : undefined,
+            zIndex: isOverlay ? 999 : "auto",
+            position: "relative",
+            background: isOverlay ? "var(--bs-transparent)" : undefined,
         }}
-        className={`d-flex flex-column align-items-stretch gap-2 py-3 ${className || ""}`}
+        className={`list-group-item d-flex flex-column align-items-stretch gap-2 py-3 ${className || ""}`}
         {...props}
       >
         <div className="d-flex justify-content-between align-items-start">
@@ -86,7 +90,7 @@ const RecipeItem = forwardRef<HTMLElement, RecipeItemProps>(
             <i className="bi bi-trash"></i> Delete
           </Button>
         </div>
-      </ListGroup.Item>
+      </motion.div>
     );
   }
 );

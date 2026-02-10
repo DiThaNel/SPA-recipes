@@ -3,6 +3,7 @@
 import { Card, Button, ListGroup } from "react-bootstrap";
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { AnimatePresence } from "framer-motion";
 import { DayPlan, Recipe } from "@/types";
 import SortableRecipe from "./SortableRecipe";
 
@@ -33,14 +34,16 @@ export default function DayCard({ dayPlan, onAddRecipe, onEditRecipe, onDeleteRe
             strategy={verticalListSortingStrategy}
           >
             <ListGroup variant="flush" className="flex-grow-1">
-              {dayPlan.recipes.map((recipe) => (
-                <SortableRecipe
-                  key={recipe.id}
-                  recipe={recipe}
-                  onEdit={onEditRecipe}
-                  onDelete={onDeleteRecipe}
-                />
-              ))}
+              <AnimatePresence mode="popLayout">
+                {dayPlan.recipes.map((recipe) => (
+                  <SortableRecipe
+                    key={recipe.id}
+                    recipe={recipe}
+                    onEdit={onEditRecipe}
+                    onDelete={onDeleteRecipe}
+                  />
+                ))}
+              </AnimatePresence>
             </ListGroup>
           </SortableContext>
         )}
