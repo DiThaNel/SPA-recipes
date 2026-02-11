@@ -40,7 +40,6 @@ export default function ShoppingListModal({ show, onHide, weekPlan }: ShoppingLi
     <Modal show={show} onHide={onHide} centered scrollable>
       <Modal.Header closeButton className="border-0">
         <Modal.Title className="fw-bold">
-            <i className="bi bi-cart4 me-2"></i>
             Shopping List
         </Modal.Title>
       </Modal.Header>

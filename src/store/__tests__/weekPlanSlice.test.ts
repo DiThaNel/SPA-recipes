@@ -50,7 +50,7 @@ describe("weekPlanSlice", () => {
   });
 
   it("should handle moveRecipeToDifferentDay", () => {
-    let state = reducer(initialState, addRecipe({ day: "Monday", recipe: sampleRecipe }));
+    const state = reducer(initialState, addRecipe({ day: "Monday", recipe: sampleRecipe }));
     
     const actual = reducer(state, moveRecipeToDifferentDay({ 
         sourceDayName: "Monday", 

@@ -44,12 +44,14 @@ export default function RecipeSidebar({ recipes }: RecipeSidebarProps) {
   };
 
   return (
-    <Card className="h-100 shadow-sm border-0 bg-light">
-      <Card.Header className="text-white text-center fw-bold d-flex justify-content-between align-items-center">
-        <span>Recipe Bank</span>
-        <Button variant="light" size="sm" onClick={handleAddRecipe}>+</Button>
+    <Card className="h-100 shadow-sm border-0">
+      <Card.Header className="text-center fw-bold d-flex justify-content-between align-items-center py-3">
+        <span><i className="bi bi-collection me-2"></i>Recipe Bank</span>
+        <Button variant="outline-light" size="sm" onClick={handleAddRecipe} className="opacity-50 hover-opacity-100 border-0">
+            <i className="bi bi-plus-lg"></i>
+        </Button>
       </Card.Header>
-      <Card.Body ref={setNodeRef} className="d-flex flex-column p-2" style={{ minHeight: "150px", overflowY: "auto" }}>
+      <Card.Body ref={setNodeRef} className="d-flex flex-column p-2" style={{ minHeight: "150px", overflowY: "auto", maxHeight: "calc(100vh - 200px)" }}>
           <SortableContext 
             items={recipes.map(r => r.id)} 
             strategy={verticalListSortingStrategy}

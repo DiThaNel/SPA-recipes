@@ -64,24 +64,30 @@ export default function Home() {
       onDragEnd={handleDragEnd}
     >
       <Container className="py-5">
-        <header className="mb-5 text-center">
+        <header className="mb-5 text-center position-relative">
+            <div className="position-absolute top-50 start-50 translate-middle" style={{ zIndex: -1, width: "150%", height: "150%", background: "radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%)", filter: "blur(60px)" }}></div>
             <motion.div
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
             >
-                <h1 className="display-4 fw-bold text-primary">Weekly Recipe Scheduler</h1>
-                <p className="lead text-secondary mb-4">Plan your meals for the week efficiently.</p>
+                <h1 className="display-3 fw-bold text-white mb-2" style={{ letterSpacing: "-0.025em", textShadow: "0 2px 10px rgba(0,0,0,0.3)" }}>
+                    Weekly <span className="text-primary">Recipes</span>
+                </h1>
+                <p className="lead text-secondary mb-5" style={{ maxWidth: "600px", margin: "0 auto", fontSize: "1.1rem" }}>
+                    Plan your meals professionally. Drag, drop, and generate your shopping list in seconds.
+                </p>
                 
-                <Button 
-                    variant="primary" 
-                    size="lg" 
-                    onClick={() => setShowShoppingList(true)}
-                    className="btn-save shadow-sm rounded-pill px-4"
-                >
-                    <i className="bi bi-cart4 me-2"></i>
-                    Generate Shopping List
-                </Button>
+                <motion.div whileHover={{ scale: 1.0 }} whileTap={{ scale: 1.0 }}>
+                    <Button 
+                        variant="primary" 
+                        size="sm" 
+                        onClick={() => setShowShoppingList(true)}
+                        className="btn-save shadow-lg rounded-pill px-4 py-3 fw-bold d-flex align-items-center gap-2 mx-auto"
+                    >
+                        Generate Shopping List
+                    </Button>
+                </motion.div>
             </motion.div>
         </header>
 

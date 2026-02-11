@@ -22,19 +22,19 @@ describe("recipeBankSlice", () => {
   });
 
   it("should not add duplicate recipe ID", () => {
-    let state = reducer(initialState, addRecipeToBank(sampleRecipe));
+    const state = reducer(initialState, addRecipeToBank(sampleRecipe));
     const actual = reducer(state, addRecipeToBank(sampleRecipe));
     expect(actual.savedRecipes).toHaveLength(1);
   });
 
   it("should remove recipe from bank", () => {
-    let state = reducer(initialState, addRecipeToBank(sampleRecipe));
+    const state = reducer(initialState, addRecipeToBank(sampleRecipe));
     const actual = reducer(state, removeRecipeFromBank("b1"));
     expect(actual.savedRecipes).toHaveLength(0);
   });
 
   it("should update recipe in bank", () => {
-    let state = reducer(initialState, addRecipeToBank(sampleRecipe));
+    const state = reducer(initialState, addRecipeToBank(sampleRecipe));
     const updatedRecipe = { ...sampleRecipe, name: "Updated Name" };
     const actual = reducer(state, updateRecipeInBank(updatedRecipe));
     expect(actual.savedRecipes[0].name).toBe("Updated Name");

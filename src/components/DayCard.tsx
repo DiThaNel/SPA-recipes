@@ -21,13 +21,16 @@ export default function DayCard({ dayPlan, onAddRecipe, onEditRecipe, onDeleteRe
 
   return (
     <Card className="h-100 shadow-sm">
-      <Card.Header className="bg-primary text-white text-center fw-bold">
+      <Card.Header className="text-center py-3">
         {dayPlan.day}
       </Card.Header>
       <Card.Body ref={setNodeRef} className="d-flex flex-column" style={{ minHeight: "150px" }}> 
         
         {dayPlan.recipes.length === 0 ? (
-           <div className="text-muted text-center my-auto py-3">No recipes planned.</div>
+           <div className="text-secondary text-center my-auto py-4 fst-italic opacity-75">
+             <i className="bi bi-journal-plus fs-2 mb-2 d-block"></i>
+             No recipes planned
+           </div>
         ) : (
           <SortableContext 
             items={dayPlan.recipes.map(r => r.id)} 
@@ -49,8 +52,8 @@ export default function DayCard({ dayPlan, onAddRecipe, onEditRecipe, onDeleteRe
         )}
       </Card.Body>
       <Card.Footer className="border-0">
-        <Button variant="outline-primary" size="sm" className="w-100" onClick={onAddRecipe}>
-          + Add Recipe
+        <Button variant="outline-primary" size="sm" className="w-100 border-dashed opacity-75 hover-opacity-100" onClick={onAddRecipe}>
+          <i className="bi bi-plus-lg me-1"></i> Add Recipe
         </Button>
       </Card.Footer>
     </Card>

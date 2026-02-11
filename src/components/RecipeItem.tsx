@@ -21,14 +21,16 @@ const RecipeItem = forwardRef<HTMLDivElement, RecipeItemProps>(
         initial={isOverlay ? { scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.2)" } : { opacity: 0, y: 10 }}
         animate={isOverlay ? { scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.2)" } : { opacity: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9 }}
+
+        className={`list-group-item d-flex flex-column align-items-stretch gap-2 py-3 border-0 rounded-3 mb-2 ${className || ""}`}
         style={{
             ...style,
+            backgroundColor: isOverlay ? "rgba(255, 255, 255, 0)" : "rgba(255, 255, 255, 0.02)",
             cursor: isOverlay ? "grabbing" : "grab",
             zIndex: isOverlay ? 999 : "auto",
             position: "relative",
-            background: isOverlay ? "var(--bs-transparent)" : undefined,
+            backdropFilter: isOverlay ? "blur(8px)" : "none",
         }}
-        className={`list-group-item d-flex flex-column align-items-stretch gap-2 py-3 ${className || ""}`}
         {...props}
       >
         <div className="d-flex justify-content-between align-items-start">
@@ -42,7 +44,7 @@ const RecipeItem = forwardRef<HTMLDivElement, RecipeItemProps>(
 
         {recipe.preparation && (
           <div
-            className="bg-light p-2 rounded border-start border-4 border-warning mb-2"
+            className="bg-light p-2 rounded border-start border-2 border-warning mb-2"
             onPointerDown={(e) => e.stopPropagation()}
           >
             <p className="small mb-0 text-dark">
@@ -57,7 +59,7 @@ const RecipeItem = forwardRef<HTMLDivElement, RecipeItemProps>(
 
         {recipe.ingredients && (
           <div
-            className="bg-light p-2 rounded border-start border-4 border-info"
+            className="bg-light p-2 rounded border-start border-2 border-info"
             onPointerDown={(e) => e.stopPropagation()}
           >
             <p className="small mb-0 text-dark">
