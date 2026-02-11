@@ -27,7 +27,7 @@ A dynamic recipe management application designed to streamline meal planning. Us
    ```bash
    npm run dev
    ```
-3. Open [http://localhost:3000](http://localhost:3000) to view the application or Vercel Deploy https://spa-recipes.vercel.app/
+3. Open [http://localhost:3000](http://localhost:3000) to view the application or Vercel Deploy [https://spa-recipes.vercel.app/](https://sparecipes.vercel.app/)
 
 ### Testing
 Run the test suite with:
